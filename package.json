@@ -1,0 +1,14 @@
+{
+  "name": "com.outsystems.experts.sfcm-fix-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "cordova": {
+    "id": "com.outsystems.experts.sfcm-fix-plugin",
+    "platforms": []
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "",
+  "license": "ISC"
+}

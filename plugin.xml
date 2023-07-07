@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.outsystems.experts.sfcm-fix-plugin" version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>sfcm-fix-plugin</name>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="SFCMFixPlugin">
+                <param name="ios-package" value="SFCMFixPlugin" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/AppDelegate+SFCMFix.m" />
+    </platform>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="sfcm-fix-plugin">
+                <param name="android-package" value="com.outsystems.experts.sfcm-fix-plugin.sfcm-fix-plugin" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+    </platform>
+
+    <hook type="after_prepare" src="hooks/android/after_prepare.js" />
+</plugin>
