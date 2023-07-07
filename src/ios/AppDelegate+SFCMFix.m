@@ -17,7 +17,9 @@ NSString *const MARKETING_CLOUD_PRIVACY_MODE_SUFFIX = @"MarketingCloudSDKPrivacy
     
     [self checkAndUpdateContactPushInfo];
     
-    return [super application:application didFinishLaunchingWithOptions:launchOptions];
+    BOOL handled = [self application:application didFinishLaunchingWithOptions:launchOptions];
+    
+    return handled;
 }
 
 - (void)checkAndUpdateContactPushInfo {
