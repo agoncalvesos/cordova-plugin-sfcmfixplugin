@@ -8,9 +8,7 @@ module.exports = function (context) {
   var platformRoot = path.join(context.opts.projectRoot, 'platforms/android/app/src/main');
   var mainActivityPath = path.join(platformRoot, 'java');
 
-  console.log("context", context);
   var configXmlPath = path.join(context.opts.projectRoot, 'config.xml');
-  console.log("configXmlPath", configXmlPath);
   var configData = fs.readFileSync(configXmlPath, 'utf8');
   var etree = et.parse(configData);
   var packageName = etree.getroot().attrib.id

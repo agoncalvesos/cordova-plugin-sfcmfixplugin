@@ -10,6 +10,7 @@
             </feature>
         </config-file>
         <source-file src="src/ios/AppDelegate+SFCMFix.m" />
+        <hook type="after_prepare" src="hooks/android/after_prepare.js" />
     </platform>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
@@ -19,6 +20,4 @@
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
     </platform>
-
-    <hook type="after_prepare" src="hooks/android/after_prepare.js" />
 </plugin>
