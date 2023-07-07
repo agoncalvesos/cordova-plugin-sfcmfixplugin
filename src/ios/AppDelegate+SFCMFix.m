@@ -11,6 +11,7 @@
 
 NSString *const MARKETING_CLOUD_PRIVACY_MODE_KEY = @"MarketingCloudSDK_PrivacyModeOverridden_1";
 NSString *const MARKETING_CLOUD_PRIVACY_MODE_SUFFIX = @"MarketingCloudSDKPrivacy_SFMCPrivacyMode";
+NSString *const MARKETING_CLOUD_PRIVACY_MODE_DATE_KEY = @"MarketingCloudSDK_PrivacyMode_Date";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> *)launchOptions{
     NSLog(@"------ AppDelegate+SFCMFix ----------");
@@ -40,14 +41,27 @@ NSString *const MARKETING_CLOUD_PRIVACY_MODE_SUFFIX = @"MarketingCloudSDKPrivacy
 
         if (!match) {
             NSLog(@"Failed to get sfAppId");
-            return [super application:application didFinishLaunchingWithOptions:launchOptions];
+            return;
         }
         
         NSRange matchRange = [match rangeAtIndex:1];
         NSString *sfAppId = [xmlString substringWithRange:matchRange];
-            
+        
         [[NSUserDefaults standardUserDefaults] removeObjectForKey: [NSString stringWithFormat:@"%@_%@",sfAppId, MARKETING_CLOUD_PRIVACY_MODE_SUFFIX]];
+        [[NSUserDefaults standardUserDefaults] setValue:[self getUtcDate] forKey: MARKETING_CLOUD_PRIVACY_MODE_DATE_KEY];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:MARKETING_CLOUD_PRIVACY_MODE_KEY];
+        
+        
    }
+}
+
+- (NSString*)getUtcDate{
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"dd/MM/yyyy HH:mm";
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    NSString *formattedDate = [dateFormatter stringFromDate:currentDate];
+    
+    return formattedDate;
 }
 @end
