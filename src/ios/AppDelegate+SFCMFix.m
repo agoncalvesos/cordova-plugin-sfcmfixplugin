@@ -18,9 +18,7 @@ NSString *const MARKETING_CLOUD_PRIVACY_MODE_DATE_KEY = @"MarketingCloudSDK_Priv
     
     [self checkAndUpdateContactPushInfo];
     
-    BOOL handled = [self application:application didFinishLaunchingWithOptions:launchOptions];
-    
-    return handled;
+    return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)checkAndUpdateContactPushInfo {
